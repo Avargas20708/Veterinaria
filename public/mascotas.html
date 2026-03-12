@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mascotas - Happy Pet</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>🐶 Mascotas</h1>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="clientes.html">Clientes</a>
+      <a href="mascotas.html">Mascotas</a>
+      <a href="citas.html">Citas</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div id="mensaje" class="alert"></div>
+
+    <section class="card">
+      <h2>Registrar / editar mascota</h2>
+      <form id="formMascota">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="id">ID</label>
+            <input type="number" id="id" required />
+          </div>
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" required />
+          </div>
+          <div class="form-group">
+            <label for="especie">Especie</label>
+            <input type="text" id="especie" required />
+          </div>
+          <div class="form-group">
+            <label for="raza">Raza</label>
+            <input type="text" id="raza" required />
+          </div>
+          <div class="form-group">
+            <label for="edad">Edad</label>
+            <input type="number" id="edad" min="0" required />
+          </div>
+          <div class="form-group">
+            <label for="cliente_id">Dueño (ID cliente)</label>
+            <select id="cliente_id" required></select>
+          </div>
+        </div>
+        <div class="actions">
+          <button class="btn-primary" type="submit">Guardar mascota</button>
+          <button class="btn-secondary" type="button" id="btnCancelar">Cancelar edición</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>Listado de mascotas</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Especie</th>
+              <th>Raza</th>
+              <th>Edad</th>
+              <th>Dueño</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tablaMascotas"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/mascotas.js"></script>
+</body>
+</html>

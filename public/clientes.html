@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Clientes - Happy Pet</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>👤 Clientes</h1>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="clientes.html">Clientes</a>
+    <a href="mascotas.html">Mascotas</a>
+    <a href="citas.html">Citas</a>
+  </nav>
+</header>
+
+<main class="container">
+  <div class="card">
+    <h2>Registrar cliente</h2>
+
+    <form id="formCliente">
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="id">ID</label>
+          <input type="number" id="id" required>
+        </div>
+
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" required>
+        </div>
+
+        <div class="form-group">
+          <label for="apellido">Apellido</label>
+          <input type="text" id="apellido" required>
+        </div>
+
+        <div class="form-group">
+          <label for="telefono">Teléfono</label>
+          <input type="text" id="telefono" required>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <button type="button" class="btn btn-warning" id="btnCancelar">Cancelar</button>
+      </div>
+    </form>
+
+    <p id="mensaje"></p>
+  </div>
+
+  <div class="card">
+    <h2>Clientes registrados</h2>
+    <div class="table-wrap">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Teléfono</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="tablaClientes"></tbody>
+      </table>
+    </div>
+  </div>
+</main>
+
+<script src="app-clientes.js"></script>
+</body>
+</html>
