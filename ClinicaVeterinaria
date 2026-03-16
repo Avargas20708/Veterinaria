@@ -1,0 +1,114 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package principal;
+
+/**
+ *
+ * @author randa
+ */
+
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.ArrayList;
+
+public class Main {
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> new InterfazClientes().setVisible(true));
+    }
+}
+
+class InterfazClientes extends JFrame {
+
+    private JTextField txtNombre, txtTelefono, txtDireccion;
+    private JButton btnGuardar;
+    private JTable tablaClientes;
+    private DefaultTableModel modeloTabla;
+    private java.util.List<Cliente> listaClientes;
+
+    public InterfazClientes() {
+        setTitle("Registro de Clientes");
+        setSize(600, 400);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+
+        listaClientes = new ArrayList<>();
+
+        // Panel de entrada
+        JPanel panelEntrada = new JPanel(new GridLayout(4, 2, 10, 10));
+        panelEntrada.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        panelEntrada.add(new JLabel("Nombre:"));
+        txtNombre = new JTextField();
+        panelEntrada.add(txtNombre);
+
+        panelEntrada.add(new JLabel("Teléfono:"));
+        txtTelefono = new JTextField();
+        panelEntrada.add(txtTelefono);
+
+        panelEntrada.add(new JLabel("Dirección:"));
+        txtDireccion = new JTextField();
+        panelEntrada.add(txtDireccion);
+
+        btnGuardar = new JButton("Guardar");
+        panelEntrada.add(btnGuardar);
+
+        getContentPane().setLayout(new BorderLayout());
+        getContentPane().add(panelEntrada, BorderLayout.NORTH);
+
+        // Tabla para mostrar clientes
+        modeloTabla = new DefaultTableModel(new Object[]{"Nombre", "Teléfono", "Dirección"}, 0);
+        tablaClientes = new JTable(modeloTabla);
+        JScrollPane scroll = new JScrollPane(tablaClientes);
+        getContentPane().add(scroll, BorderLayout.CENTER);
+
+        // Acción del botón guardar
+        btnGuardar.addActionListener(e -> guardarCliente());
+    }
+
+    private void guardarCliente() {
+        String nombre = txtNombre.getText().trim();
+        String telefono = txtTelefono.getText().trim();
+        String direccion = txtDireccion.getText().trim();
+
+        if(nombre.isEmpty() || telefono.isEmpty() || direccion.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        Cliente cliente = new Cliente(nombre, telefono, direccion);
+        listaClientes.add(cliente);
+
+        // Agregar a la tabla
+        modeloTabla.addRow(new Object[]{nombre, telefono, direccion});
+
+        // Limpiar campos
+        txtNombre.setText("");
+        txtTelefono.setText("");
+        txtDireccion.setText("");
+    }
+}
+
+// Clase simple de Cliente
+class Cliente {
+    private String nombre, telefono, direccion;
+
+    public Cliente(String nombre, String telefono, String direccion) {
+        this.nombre = nombre;
+        this.telefono = telefono;
+        this.direccion = direccion;
+    }
+
+    public String getNombre() { return nombre; }
+    public String getTelefono() { return telefono; }
+    public String getDireccion() { return direccion; }
+}
+
+
+
+
+
